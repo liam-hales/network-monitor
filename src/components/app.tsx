@@ -23,7 +23,7 @@ const App: FunctionComponent<Props> = ({ children }): ReactElement<Props> => {
   const pathname = usePathname();
 
   return (
-    <div className="h-full flex flex-row items-center">
+    <div className="h-full flex flex-row items-start">
       <div className="h-full flex flex-col items-start gap-y-10 pt-8 pb-8 pl-4 pr-4 border-solid border-r-[1px] border-neutral-900">
         <div className="flex flex-col items-start gap-y-1 pl-4 pr-8">
           <p className="font-mono text-white text-xl">
@@ -64,7 +64,7 @@ const App: FunctionComponent<Props> = ({ children }): ReactElement<Props> => {
           }
         </div>
       </div>
-      <div className="flex flex-col items-center p-4">
+      <div className="flex flex-col items-center p-8">
         {children}
       </div>
     </div>
