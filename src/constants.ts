@@ -4,7 +4,7 @@
  */
 export const appNavItems = [
   {
-    name: 'Dashboard',
+    name: 'Overview',
     path: '/',
   },
   {
