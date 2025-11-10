@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "network-monitor",
+  "description": "Self-hosted web app with server-side monitoring tools designed to monitor your network and help you better understand it.",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.11",
+    "npm": ">=10.9"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liam-hales/network-monitor.git"
+  },
+  "packageManager": "yarn@4.7.0",
+  "scripts": {
+    "start:dev": "next dev",
+    "start:prod": "next start",
+    "build": "next build",
+    "build:analyse": "ANALYSE_BUNDLE=true next build",
+    "build:icons": "ts-node ./scripts/buildIcons.script.ts",
+    "lint": "next lint",
+    "deps": "ncu --packageManager yarn",
+    "cleanup": "rm -rf .next/"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "@vercel/analytics": "^1.5.0",
+    "next": "^15.5.3",
+    "postcss": "^8.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^15.5.3",
+    "@stylistic/eslint-plugin": "^3.0.1",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.1",
+    "@types/node": "^24.9.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-next": "^15.5.3",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "npm-check-updates": "^19.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
