@@ -31,12 +31,22 @@ const AppSidebar: FunctionComponent<Props> = ({ ipAddress, macAddress }): ReactE
           Network Monitor
         </p>
         <div className="flex flex-col items-start gap-y-1">
-          <p className="font-mono text-neutral-500 text-xs">
-            {`IP address - ${ipAddress}`}
-          </p>
-          <p className="font-mono text-neutral-500 text-xs">
-            {`MAC address - ${macAddress}`}
-          </p>
+          <div className="flex flex-row items-center">
+            <p className="w-28 font-mono text-neutral-500 text-xs">
+              IP address:
+            </p>
+            <p className="font-mono text-neutral-500 text-xs">
+              {ipAddress}
+            </p>
+          </div>
+          <div className="flex flex-row items-center">
+            <p className="w-28 font-mono text-neutral-500 text-xs">
+              MAC address:
+            </p>
+            <p className="font-mono text-neutral-500 text-xs">
+              {macAddress}
+            </p>
+          </div>
         </div>
       </div>
       <div className="w-full flex flex-col items-start gap-y-2">
