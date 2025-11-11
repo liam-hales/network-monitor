@@ -2,7 +2,7 @@ import './globals.css';
 
 import { FunctionComponent, ReactElement, ReactNode } from 'react';
 import { BaseProps } from '../types';
-import { cascadiaCode } from '../fonts';
+import { montserrat, cascadiaCode } from '../fonts';
 import { viewport } from './metadata';
 import { App } from '../components';
 
@@ -24,7 +24,7 @@ const AppLayout: FunctionComponent<Props> = ({ children }): ReactElement<Props> 
   return (
     <html
       lang="en"
-      className={`h-full ${cascadiaCode.variable} overscroll-none`}
+      className={`h-full ${montserrat.className} ${cascadiaCode.variable} overscroll-none`}
     >
       <body className="h-full bg-black touch-none">
         <App>
