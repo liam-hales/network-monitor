@@ -62,15 +62,19 @@ const AppSidebar: FunctionComponent<Props> = ({ ipAddress, macAddress }): ReactE
                 aria-label={name}
               >
                 <div className={`
-                    w-full flex flex-row items-center border-solid border-[1px] rounded-sm cursor-pointer gap-x-4 pt-2 pb-2 pl-4
+                    w-full flex flex-row items-center border-solid border-[1px] border-transparent rounded-sm cursor-pointer gap-x-4 pt-2 pb-2 pl-4
 
                     hover:bg-neutral-900
-
-                    ${(pathname === path) ? 'bg-neutral-900' : 'bg-transparent'}
-                    ${(pathname === path) ? 'border-neutral-800' : 'border-transparent'}
+                    hover:border-neutral-800
                   `}
                 >
-                  <p className="font-mono text-white text-sm">
+                  <p className={`
+                    font-mono text-white text-sm decoration-solid decoration-2 underline-offset-4
+
+                    ${(pathname === path) ? 'font-bold' : 'font-normal'}
+                    ${(pathname === path) ? 'underline' : 'no-underline'}
+                  `}
+                  >
                     {name}
                   </p>
                 </div>
