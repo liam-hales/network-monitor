@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactElement, ReactNode } from 'react';
 import { BaseProps } from '../types';
 import { getHostNetworkInfo } from '../helpers';
-import { Sidebar } from './';
+import { AppSidebar } from './';
 
 /**
  * The `App` component props
@@ -21,7 +21,7 @@ const App: FunctionComponent<Props> = ({ children }): ReactElement<Props> => {
 
   return (
     <div className="h-full flex flex-row items-start">
-      <Sidebar
+      <AppSidebar
         ipAddress={address}
         macAddress={mac}
       />

@@ -1,9 +1,9 @@
 import App from './app';
-import Sidebar from './appSidebar';
+import AppSidebar from './appSidebar';
 import AppSidebarItem from './appSidebarItem';
 
 export {
   App,
-  Sidebar,
+  AppSidebar,
   AppSidebarItem,
 };
