@@ -1,10 +1,7 @@
-'use client';
-
 import { FunctionComponent, ReactElement } from 'react';
 import { appNavItems } from '../constants';
 import { BaseProps } from '../types';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { AppSidebarItem } from './';
 
 /**
  * The `AppSidebar` component props
@@ -22,8 +19,6 @@ interface Props extends BaseProps {
  * @returns The `AppSidebar` component
  */
 const AppSidebar: FunctionComponent<Props> = ({ ipAddress, macAddress }): ReactElement<Props> => {
-  const pathname = usePathname();
-
   return (
     <div className="h-full flex flex-col items-start gap-y-10 pt-8 pb-8 pl-4 pr-4 border-solid border-r-[1px] border-neutral-900">
       <div className="flex flex-col items-start gap-y-4 pl-4 pr-4">
@@ -52,33 +47,35 @@ const AppSidebar: FunctionComponent<Props> = ({ ipAddress, macAddress }): ReactE
       <div className="w-full flex flex-col items-start gap-y-2">
         {
           appNavItems.map((item) => {
-            const { name, path } = item;
+            const { name, path, subItems } = item;
             return (
-              <Link
-                className="w-full"
-                key={`sidebar-menu-item-${name}`}
-                href={path}
-                passHref={true}
-                aria-label={name}
+              <div
+                className="w-full flex flex-col items-start"
+                key={`sidebar-item-${name}`}
               >
-                <div className={`
-                    w-full flex flex-row items-center border-solid border-[1px] border-transparent rounded-sm cursor-pointer gap-x-4 pt-2 pb-2 pl-4
-
-                    hover:bg-neutral-900
-                    hover:border-neutral-800
-                  `}
-                >
-                  <p className={`
-                    font-mono text-white text-sm decoration-solid decoration-2 underline-offset-4
-
-                    ${(pathname === path) ? 'font-bold' : 'font-normal'}
-                    ${(pathname === path) ? 'underline' : 'no-underline'}
-                  `}
-                  >
-                    {name}
-                  </p>
-                </div>
-              </Link>
+                <AppSidebarItem
+                  name={name}
+                  path={path}
+                />
+                {
+                  (subItems.length > 0) && (
+                    <div className="w-full flex flex-col items-start gap-y-2 pt-2 pb-4 pl-6">
+                      {
+                        subItems.map((item) => {
+                          const { name, path } = item;
+                          return (
+                            <AppSidebarItem
+                              key={`sidebar-sub-item-${name}`}
+                              name={name}
+                              path={path}
+                            />
+                          );
+                        })
+                      }
+                    </div>
+                  )
+                }
+              </div>
             );
           })
         }
