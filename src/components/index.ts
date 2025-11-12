@@ -3,6 +3,7 @@ import AppSidebar from './appSidebar';
 import AppSidebarItem from './appSidebarItem';
 import LineChart from './chart/lineChart';
 import ChartTooltip from './chart/chartTooltip';
+import NetworkSpeedPanel from './panels/networkSpeedPanel';
 
 export {
   App,
@@ -10,4 +11,5 @@ export {
   AppSidebarItem,
   LineChart,
   ChartTooltip,
+  NetworkSpeedPanel,
 };
