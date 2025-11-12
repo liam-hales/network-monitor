@@ -34,8 +34,8 @@ const AppSidebarItem: FunctionComponent<Props> = ({ name, path }): ReactElement<
       <div className={`
         w-full flex flex-row items-center border-solid border-[1px] border-transparent rounded-sm cursor-pointer gap-x-4 pt-2 pb-2 pl-4
 
-        hover:bg-neutral-900
-        hover:border-neutral-800
+        ${(pathname !== path) ? 'hover:bg-neutral-900' : ''}
+        ${(pathname !== path) ? 'hover:border-neutral-800' : ''}
       `}
       >
         <p className={`
