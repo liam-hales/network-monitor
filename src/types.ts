@@ -35,3 +35,34 @@ export interface NetworkSpeedTestValues {
   readonly latency: number;
   readonly jitter: number;
 }
+
+/**
+ * Describes a single chart
+ * tooltip data point
+ */
+export interface ChartTooltipDataPoint {
+  readonly name: string;
+  readonly value: string;
+  readonly color: string;
+  readonly dataKey: string;
+}
+
+/**
+ * Describes the axis data for
+ * the `LineChart` component
+ */
+export interface ChartAxis {
+  readonly name: string;
+  readonly key: string;
+  readonly formatter?: (value: string) => string;
+}
+
+/**
+ * Describes the line data for
+ * the `LineChart` component
+ */
+export interface ChartLine {
+  readonly name: string;
+  readonly key: string;
+  readonly colour: string;
+}
