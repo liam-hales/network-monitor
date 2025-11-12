@@ -13,3 +13,8 @@
   --font-sans: var(--sans-font);
   --font-mono: var(--mono-font);
 }
+
+.recharts-surface,
+.recharts-surface * {
+  outline: none;
+}
