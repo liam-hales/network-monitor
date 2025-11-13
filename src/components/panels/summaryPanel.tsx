@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactElement } from 'react';
-import { ArrowDown, ArrowUp, ArrowRightLeft, AudioLines } from 'lucide-react';
+import { MoveDown, MoveUp, ArrowRightLeft, AudioLines } from 'lucide-react';
 import { BaseProps } from '../../types';
 
 /**
@@ -22,12 +22,12 @@ interface Props extends BaseProps {
 const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, latency, jitter }): ReactElement<Props> => {
   return (
     <div className={`${className ?? ''} flex flex-row items-center gap-x-4`}>
-      <div className="w-[25%] flex flex-col items-start bg-black rounded-lg border-solid border-[1px] border-neutral-800 gap-y-2 pt-3 pb-3 pl-4 pr-4">
+      <div className="w-[25%] flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-2 pt-3 pb-3 pl-4 pr-4">
         <div className="w-full flex flex-row items-center justify-between">
           <p className="font-mono text-white text-sm">
             Download
           </p>
-          <ArrowDown
+          <MoveDown
             className="text-white"
             size={16}
             strokeWidth={3}
@@ -42,12 +42,12 @@ const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, l
           </p>
         </div>
       </div>
-      <div className="w-[25%] flex flex-col items-start bg-black rounded-lg border-solid border-[1px] border-neutral-800 gap-y-2 pt-3 pb-3 pl-4 pr-4">
+      <div className="w-[25%] flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-2 pt-3 pb-3 pl-4 pr-4">
         <div className="w-full flex flex-row items-center justify-between">
           <p className="font-mono text-white text-sm">
             Upload
           </p>
-          <ArrowUp
+          <MoveUp
             className="text-white"
             size={16}
             strokeWidth={3}
@@ -62,7 +62,7 @@ const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, l
           </p>
         </div>
       </div>
-      <div className="w-[25%] flex flex-col items-start bg-black rounded-lg border-solid border-[1px] border-neutral-800 gap-y-2 pt-3 pb-3 pl-4 pr-4">
+      <div className="w-[25%] flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-2 pt-3 pb-3 pl-4 pr-4">
         <div className="w-full flex flex-row items-center justify-between">
           <p className="font-mono text-white text-sm">
             Latency
@@ -82,7 +82,7 @@ const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, l
           </p>
         </div>
       </div>
-      <div className="w-[25%] flex flex-col items-start bg-black rounded-lg border-solid border-[1px] border-neutral-800 gap-y-2 pt-3 pb-3 pl-4 pr-4">
+      <div className="w-[25%] flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-2 pt-3 pb-3 pl-4 pr-4">
         <div className="w-full flex flex-row items-center justify-between">
           <p className="font-mono text-white text-sm">
             Jitter
