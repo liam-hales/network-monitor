@@ -7,7 +7,7 @@ import { useDate } from '../../hooks';
 import { BaseProps } from '../../types';
 
 /**
- * The `NetworkSpeedPanel` component props
+ * The `SpeedPanel` component props
  */
 interface Props extends BaseProps {
   readonly data: Record<string, string | number>[];
@@ -18,15 +18,15 @@ interface Props extends BaseProps {
  * panel for the overview page
  *
  * @param props The component props
- * @returns The `NetworkSpeedPanel` component
+ * @returns The `SpeedPanel` component
  */
-const NetworkSpeedPanel: FunctionComponent<Props> = ({ className, data }): ReactElement<Props> => {
+const SpeedPanel: FunctionComponent<Props> = ({ className, data }): ReactElement<Props> => {
   const { from } = useDate();
 
   return (
     <div className={`${className ?? ''} flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-5 p-4`}>
       <p className="font-mono text-white text-lg">
-        Network Speed
+        Speed
       </p>
       <div className="flex flex-row items-center gap-x-10 bg-black rounded-lg border-solid border-[1px] border-neutral-800 pt-3 pb-3 pl-4 pr-4">
         <div className="flex flex-row items-center">
@@ -84,4 +84,4 @@ const NetworkSpeedPanel: FunctionComponent<Props> = ({ className, data }): React
   );
 };
 
-export default NetworkSpeedPanel;
+export default SpeedPanel;
