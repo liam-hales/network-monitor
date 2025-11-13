@@ -66,3 +66,13 @@ export interface ChartLine {
   readonly key: string;
   readonly colour: string;
 }
+
+/**
+ * Describes a single data
+ * point for a chart
+ *
+ * - Generic type `K` for the data point keys
+ */
+export type ChartDataPoint<K extends string> = Record<K, number> & {
+  readonly date: string;
+};
