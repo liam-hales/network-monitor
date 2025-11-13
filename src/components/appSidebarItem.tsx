@@ -32,7 +32,7 @@ const AppSidebarItem: FunctionComponent<Props> = ({ name, path }): ReactElement<
       aria-label={name}
     >
       <div className={`
-        w-full flex flex-row items-center border-solid border-[1px] border-transparent rounded-sm cursor-pointer gap-x-4 pt-2 pb-2 pl-4
+        w-full flex flex-row items-center border-solid border-[1px] border-transparent rounded-sm gap-x-4 pt-2 pb-2 pl-4
 
         ${(pathname !== path) ? 'hover:bg-neutral-900' : ''}
         ${(pathname !== path) ? 'hover:border-neutral-800' : ''}
