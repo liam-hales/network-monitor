@@ -20,12 +20,14 @@ const App: FunctionComponent<Props> = ({ children }): ReactElement<Props> => {
   const { address, mac } = getHostNetworkInfo();
 
   return (
-    <div className="h-full flex flex-row items-start">
-      <AppSidebar
-        ipAddress={address}
-        macAddress={mac}
-      />
-      <div className="flex flex-col items-center p-8">
+    <div className="flex flex-row items-start">
+      <div className="h-screen sticky top-0">
+        <AppSidebar
+          ipAddress={address}
+          macAddress={mac}
+        />
+      </div>
+      <div className="w-full flex flex-col items-center p-8">
         {children}
       </div>
     </div>
