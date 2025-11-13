@@ -2,15 +2,14 @@
 
 import { FunctionComponent, ReactElement } from 'react';
 import { LineChart } from '../../components';
-import { MoveDown, MoveUp } from 'lucide-react';
 import { useDate } from '../../hooks';
-import { BaseProps } from '../../types';
+import { BaseProps, ChartDataPoint } from '../../types';
 
 /**
  * The `SpeedPanel` component props
  */
 interface Props extends BaseProps {
-  readonly data: Record<string, string | number>[];
+  readonly chartData: ChartDataPoint<'download' | 'upload'>[];
 }
 
 /**
@@ -20,7 +19,7 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `SpeedPanel` component
  */
-const SpeedPanel: FunctionComponent<Props> = ({ className, data }): ReactElement<Props> => {
+const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactElement<Props> => {
   const { from } = useDate();
 
   return (
@@ -28,32 +27,6 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, data }): ReactElement
       <p className="font-mono text-white text-lg">
         Speed
       </p>
-      <div className="flex flex-row items-center gap-x-10 bg-black rounded-lg border-solid border-[1px] border-neutral-800 pt-3 pb-3 pl-4 pr-4">
-        <div className="flex flex-row items-center">
-          <MoveDown
-            className="text-blue-400"
-            size={30}
-          />
-          <p className="font-sans font-bold text-blue-400 text-4xl">
-            400
-          </p>
-          <p className="font-mono text-white text-sm pt-3 pl-1">
-            mbps
-          </p>
-        </div>
-        <div className="flex flex-row items-center">
-          <MoveUp
-            className="text-purple-400"
-            size={30}
-          />
-          <p className="font-sans font-bold text-purple-400 text-4xl">
-            380
-          </p>
-          <p className="font-mono text-white text-sm pt-3 pl-1">
-            mbps
-          </p>
-        </div>
-      </div>
       <LineChart
         className="p-2"
         xAxis={{
@@ -78,7 +51,7 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, data }): ReactElement
             colour: 'var(--color-purple-400)',
           },
         ]}
-        data={data}
+        data={chartData}
       />
     </div>
   );
