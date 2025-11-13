@@ -5,19 +5,19 @@
 export const appNavItems = [
   {
     name: 'Overview',
-    path: '/',
+    path: '/overview',
     subItems: [
       {
-        name: 'Network Speed',
-        path: '/network-speed',
+        name: 'Speed',
+        path: '/overview/speed',
       },
       {
         name: 'Latency',
-        path: '/latency',
+        path: '/overview/latency',
       },
       {
         name: 'Jitter',
-        path: '/jitter',
+        path: '/overview/jitter',
       },
     ],
   },
