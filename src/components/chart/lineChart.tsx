@@ -1,7 +1,7 @@
 'use client';
 
 import { FunctionComponent, ReactElement } from 'react';
-import { BaseProps, ChartAxis, ChartLine } from '../../types';
+import { BaseProps, ChartAxis, ChartDataPoint, ChartLine } from '../../types';
 import { ResponsiveContainer, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis, Line } from 'recharts';
 import { ChartTooltip } from '../';
 
@@ -11,7 +11,8 @@ import { ChartTooltip } from '../';
 interface Props extends BaseProps {
   readonly xAxis: ChartAxis;
   readonly lines: ChartLine[];
-  readonly data: Record<string, string | number>[];
+  readonly unit: string;
+  readonly data: ChartDataPoint[];
 }
 
 /**
@@ -21,7 +22,7 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `LineChart` component
  */
-const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, data }): ReactElement<Props> => {
+const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, data }): ReactElement<Props> => {
   return (
     <ResponsiveContainer className={className}>
       <AreaChart
@@ -45,7 +46,7 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, data }):
           dataKey={xAxis.key}
           tickFormatter={xAxis.formatter}
           tickMargin={6}
-          interval={8}
+          interval="equidistantPreserveStart"
           type="category"
           stroke="var(--color-neutral-600)"
           axisLine={false}
@@ -64,6 +65,7 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, data }):
             <ChartTooltip
               title={`${label}`}
               titleFormatter={xAxis.formatter}
+              unit={unit}
               dataPoints={[...payload]}
             />
           );

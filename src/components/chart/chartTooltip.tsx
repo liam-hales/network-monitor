@@ -7,6 +7,7 @@ import { BaseProps, ChartTooltipDataPoint } from '../../types';
 interface Props extends BaseProps {
   readonly title: string;
   readonly titleFormatter?: (value: string) => string;
+  readonly unit: string;
   readonly dataPoints: ChartTooltipDataPoint[];
 }
 
@@ -17,10 +18,10 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `ChartTooltip` component
  */
-const ChartTooltip: FunctionComponent<Props> = ({ title, titleFormatter, dataPoints }): ReactElement<Props> => {
+const ChartTooltip: FunctionComponent<Props> = ({ title, titleFormatter, unit, dataPoints }): ReactElement<Props> => {
   return (
-    <div className="min-w-36 flex flex-col items-start bg-neutral-800 rounded-lg border-solid border-[1px] border-neutral-700 gap-y-3 pt-2 pb-2 pl-4 pr-4">
-      <p className="font-mono text-white text-sm">
+    <div className="min-w-44 flex flex-col items-start bg-neutral-800 rounded-lg border-solid border-[1px] border-neutral-700 gap-y-3 pt-2 pb-2 pl-4 pr-4">
+      <p className="font-mono text-white text-base">
         {
           (titleFormatter != null)
             ? titleFormatter(title)
@@ -38,12 +39,17 @@ const ChartTooltip: FunctionComponent<Props> = ({ title, titleFormatter, dataPoi
                 key={`chat-tooltip-data-${dataKey}`}
                 className="w-full flex flex-row items-center justify-between"
               >
-                <p className="font-mono text-xs text-neutral-500">
+                <p className="font-mono text-xs text-neutral-300">
                   {name}
                 </p>
-                <p className={`font-mono text-xs text-${colour}`}>
-                  {value}
-                </p>
+                <div className="flex flex-row items-center gap-x-1">
+                  <p className={`font-mono text-sm text-${colour}`}>
+                    {value}
+                  </p>
+                  <p className="font-mono text-xs text-neutral-500">
+                    {unit}
+                  </p>
+                </div>
               </div>
             );
           })
