@@ -24,9 +24,9 @@ const AppLayout: FunctionComponent<Props> = ({ children }): ReactElement<Props> 
   return (
     <html
       lang="en"
-      className={`h-full ${montserrat.className} ${cascadiaCode.variable} overscroll-none`}
+      className={`${montserrat.className} ${cascadiaCode.variable} overscroll-none`}
     >
-      <body className="h-full bg-black touch-none">
+      <body className="bg-black touch-none">
         <App>
           {children}
         </App>
