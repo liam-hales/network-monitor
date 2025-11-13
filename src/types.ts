@@ -73,6 +73,6 @@ export interface ChartLine {
  *
  * - Generic type `K` for the data point keys
  */
-export type ChartDataPoint<K extends string> = Record<K, number> & {
+export type ChartDataPoint<K extends string = never> = Record<K, number> & {
   readonly date: string;
 };
