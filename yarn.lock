@@ -1052,6 +1052,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lokijs@npm:^1.5.14":
+  version: 1.5.14
+  resolution: "@types/lokijs@npm:1.5.14"
+  checksum: 10/e728a87f80252f7b9a1ff1a44e9a0e15624d98d3d489d5e7f6ee057353909761ad3681bc1db428cc6bcb35f83060448a0f6ba36b1b41f2a35d481e91d360fc5f
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^24.9.2":
   version: 24.10.0
   resolution: "@types/node@npm:24.10.0"
@@ -3420,6 +3427,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lokijs@npm:^1.5.12":
+  version: 1.5.12
+  resolution: "lokijs@npm:1.5.12"
+  checksum: 10/08b11b257210901b1ee293a4573a0e0dbfd37c49161db69950415b668546ea01e983c9b370d8b847933546ef188effa87df2d5eacb2a0b6fc5b739cbcf4a2b16
+  languageName: node
+  linkType: hard
+
 "loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
@@ -3554,6 +3568,7 @@ __metadata:
     "@stylistic/eslint-plugin": "npm:^3.0.1"
     "@tailwindcss/postcss": "npm:^4.1.16"
     "@types/eslint-plugin-jsx-a11y": "npm:^6.10.1"
+    "@types/lokijs": "npm:^1.5.14"
     "@types/node": "npm:^24.9.2"
     "@types/react": "npm:^19.2.2"
     "@types/react-dom": "npm:^19.2.2"
@@ -3564,6 +3579,7 @@ __metadata:
     eslint-config-next: "npm:^15.5.3"
     eslint-plugin-import: "npm:^2.32.0"
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
+    lokijs: "npm:^1.5.12"
     lucide-react: "npm:^0.553.0"
     next: "npm:^15.5.3"
     npm-check-updates: "npm:^19.1.2"
