@@ -29,15 +29,8 @@
     "import/named": "off",
     "react/display-name": "off",
     "@stylistic/padded-blocks": "off",
+    "no-console": "off",
 
-    "no-console": [
-      "error", {
-        "allow": [
-          "warn",
-          "error"
-        ]
-      }
-    ],
     "object-shorthand": ["error", "never"],
     "eqeqeq": [
       "error",
