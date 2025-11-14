@@ -14,6 +14,9 @@ node_modules/*
 # Build
 .next/*
 
+# Database
+*.db
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
