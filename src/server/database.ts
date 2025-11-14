@@ -26,6 +26,26 @@ export const dbClient = new DatabaseClient(
     // Called once the database has finished
     // loading data from disk
     autoloadCallback: () => {
+      const collections = dbClient.listCollections();
+
+      // See if the collections
+      // exists in the database
+      const performanceExists = collections.some((item) => item.name === 'performance');
+      const uptimeExists = collections.some((item) => item.name === 'uptime');
+
+      // Create the database collections
+      // if they do not already exist
+
+      if (performanceExists === false) {
+        console.log('Database: Creating "performance" collection...');
+        dbClient.addCollection('performance');
+      }
+
+      if (uptimeExists === false) {
+        console.log('Database: Creating "uptime" collection...');
+        dbClient.addCollection('uptime');
+      }
+
       // Once the database has loaded its data and the collections have been
       // created, call the resolve function to mark the database as ready
       _dbReadyResolve();
