@@ -18,6 +18,15 @@ const withAnalyser = bundleAnalyser({
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
+  redirects: () => {
+    return [
+      {
+        source: '/',
+        destination: `/overview`,
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withAnalyser(nextConfig);
