@@ -5,6 +5,7 @@ import { BaseProps } from '../types';
 import { montserrat, cascadiaCode } from '../fonts';
 import { viewport } from './metadata';
 import { App } from '../components';
+import { DataProvider } from '../providers';
 
 /**
  * The `AppLayout` component props
@@ -27,9 +28,11 @@ const AppLayout: FunctionComponent<Props> = ({ children }): ReactElement<Props> 
       className={`${montserrat.className} ${cascadiaCode.variable} overscroll-none`}
     >
       <body className="bg-black touch-none">
-        <App>
-          {children}
-        </App>
+        <DataProvider>
+          <App>
+            {children}
+          </App>
+        </DataProvider>
       </body>
     </html>
   );
