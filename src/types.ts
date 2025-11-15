@@ -17,6 +17,14 @@ export interface BaseProps<T extends HTMLElement = HTMLElement> {
 }
 
 /**
+ * Describes the data filters
+ */
+export interface DataFilters {
+  readonly fromDate: Date;
+  readonly toDate: Date;
+}
+
+/**
  * Describes the data for when a
  * network speed test is performed
  */
