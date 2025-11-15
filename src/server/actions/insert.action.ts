@@ -4,8 +4,8 @@ import { dbClient, dbReady } from '../database';
 import { BaseEntity, InsertOptions } from '../types';
 
 /**
- * Used to insert a record
- * into the database
+ * Used to insert a record into a
+ * specified database collection
  *
  * - Generic type `E` for the entity
  *

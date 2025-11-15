@@ -4,8 +4,8 @@ import { dbClient, dbReady } from '../database';
 import { BaseEntity, FindOptions } from '../types';
 
 /**
- * Used to find database records
- * in a given database collection
+ * Used to find database records in
+ * a specified database collection
  *
  * @param options The find options
  * @returns The found entity records
