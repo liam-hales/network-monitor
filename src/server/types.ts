@@ -7,8 +7,10 @@ export interface BaseEntity {
 }
 
 /**
- * Describes the options when inserting
- * a record into the database
+ * Describes the options for
+ * the `insert` server action
+ *
+ * - Generic type `E` for the entity
  */
 export interface InsertOptions<E extends BaseEntity> {
   readonly collectionName: string;
@@ -16,18 +18,12 @@ export interface InsertOptions<E extends BaseEntity> {
 }
 
 /**
- * Describes the options when querying
- * the database for entity records
+ * Describes the options for
+ * the `find` server action
+ *
+ * - Generic type `E` for the entity
  */
-export interface QueryOptions {
+export interface FindOptions<E extends BaseEntity> {
   readonly collectionName: string;
-  readonly filters?: QueryFilters;
-}
-
-/**
- * Describes the query filters
- */
-export interface QueryFilters {
-  readonly fromDate?: Date;
-  readonly toDate?: Date;
+  readonly query: LokiQuery<E & LokiObj>;
 }

@@ -1,7 +1,7 @@
 import insert from './insert.action';
-import query from './query.action';
+import find from './find.action';
 
 export {
   insert,
-  query,
+  find,
 };
