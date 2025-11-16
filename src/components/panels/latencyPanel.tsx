@@ -38,7 +38,7 @@ const LatencyPanel: FunctionComponent<Props> = ({ className, chartData }): React
           tooltipFormatter: (value) => {
             return date
               .utc(value)
-              .format('MMMM DDD');
+              .format('MMM D YYYY, HH:mm');
           },
         }}
         lines={[
