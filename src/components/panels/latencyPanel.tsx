@@ -2,8 +2,8 @@
 
 import { FunctionComponent, ReactElement } from 'react';
 import { LineChart } from '../../components';
-import { useDate } from '../../hooks';
 import { BaseProps, ChartDataPoint } from '../../types';
+import dayjs from 'dayjs';
 
 /**
  * The `LatencyPanel` component props
@@ -20,8 +20,6 @@ interface Props extends BaseProps {
  * @returns The `LatencyPanel` component
  */
 const LatencyPanel: FunctionComponent<Props> = ({ className, chartData }): ReactElement<Props> => {
-  const { from } = useDate();
-
   return (
     <div className={`${className ?? ''} flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-5 p-4`}>
       <p className="font-mono text-white text-lg">
@@ -35,7 +33,8 @@ const LatencyPanel: FunctionComponent<Props> = ({ className, chartData }): React
           formatter: (value) => {
             // Format the date value
             // for the chart axis label
-            return from(value)
+            return dayjs
+              .utc(value)
               .format('MMM DD');
           },
         }}
