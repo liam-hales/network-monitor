@@ -1,6 +1,15 @@
 import DatabaseClient from 'lokijs';
 
 /**
+ * Describes all database
+ * collection names
+ */
+export const collectionNames = [
+  'network_performance',
+  'network_uptime',
+];
+
+/**
  * Used to store a reference to the `Promise.resolve` function from
  * `dbReady` so it can be called once the DB has been loaded
  */
@@ -28,22 +37,15 @@ export const dbClient = new DatabaseClient(
     autoloadCallback: () => {
       const collections = dbClient.listCollections();
 
-      // See if the collections
-      // exists in the database
-      const performanceExists = collections.some((item) => item.name === 'performance');
-      const uptimeExists = collections.some((item) => item.name === 'uptime');
+      // Loop through the collection names and create
+      // the collection if it does not exist
+      for (const name of collectionNames) {
+        const exists = collections.some((item) => item.name === name);
 
-      // Create the database collections
-      // if they do not already exist
-
-      if (performanceExists === false) {
-        console.log('Database: Creating "performance" collection...');
-        dbClient.addCollection('performance');
-      }
-
-      if (uptimeExists === false) {
-        console.log('Database: Creating "uptime" collection...');
-        dbClient.addCollection('uptime');
+        if (exists === false) {
+          console.log(`Database: Creating "${name}" collection...`);
+          dbClient.addCollection(name);
+        }
       }
 
       // Once the database has loaded its data and the collections have been
