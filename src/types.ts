@@ -1,4 +1,14 @@
-import { RefObject } from 'react';
+import { ReactElement, RefObject } from 'react';
+
+/**
+ * Like `FunctionComponent` from `react` but for `async`
+ * server components with a `Promise` return type
+ *
+ * - Generic type `T` for the props
+ */
+export interface AsyncComponent<T extends object = never> {
+  (props: T): Promise<ReactElement<T>> | Promise<ReactElement>;
+}
 
 /**
  * The props that all component
