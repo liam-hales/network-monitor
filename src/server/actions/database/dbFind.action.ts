@@ -7,10 +7,12 @@ import { BaseEntity, FindOptions } from '../../types';
  * Used to find database records in
  * a specified database collection
  *
+ * - Generic type `E` for the entity
+ *
  * @param options The find options
  * @returns The found entity records
  */
-const find = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[]> => {
+const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[]> => {
   const { collectionName, query } = options;
 
   // Make sure the database is ready before
@@ -29,4 +31,4 @@ const find = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[]>
     .data();
 };
 
-export default find;
+export default dbFind;

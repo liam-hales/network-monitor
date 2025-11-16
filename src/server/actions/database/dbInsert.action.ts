@@ -11,7 +11,7 @@ import { BaseEntity, InsertOptions } from '../../types';
  *
  * @param options The insert options
  */
-const insert = async <E extends BaseEntity>(options: InsertOptions<E>): Promise<void> => {
+const dbInsert = async <E extends BaseEntity>(options: InsertOptions<E>): Promise<void> => {
   const { collectionName, payload } = options;
 
   // Make sure the database is ready before
@@ -25,4 +25,4 @@ const insert = async <E extends BaseEntity>(options: InsertOptions<E>): Promise<
     .insert(payload);
 };
 
-export default insert;
+export default dbInsert;
