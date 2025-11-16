@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactElement, ReactNode } from 'react';
 import { BaseProps } from '../types';
-import { getHostNetworkInfo } from '../helpers';
 import { AppSidebar } from './';
+import { getHost } from '../server/actions';
 
 /**
  * The `App` component props
@@ -17,7 +17,7 @@ interface Props extends BaseProps {
  * @returns The `App` component
  */
 const App: FunctionComponent<Props> = ({ children }): ReactElement<Props> => {
-  const { address, mac } = getHostNetworkInfo();
+  const { address, mac } = getHost();
 
   return (
     <div className="flex flex-row items-start">
