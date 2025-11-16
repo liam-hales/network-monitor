@@ -3,7 +3,7 @@
 import { FunctionComponent, ReactElement } from 'react';
 import { LineChart } from '../../components';
 import { BaseProps, ChartDataPoint } from '../../types';
-import dayjs from 'dayjs';
+import date from '../../date';
 
 /**
  * The `LatencyPanel` component props
@@ -31,12 +31,12 @@ const LatencyPanel: FunctionComponent<Props> = ({ className, chartData }): React
           name: 'Date Time',
           key: 'date',
           labelFormatter: (value) => {
-            return dayjs
+            return date
               .utc(value)
               .format('MMM DD');
           },
           tooltipFormatter: (value) => {
-            return dayjs
+            return date
               .utc(value)
               .format('MMMM DDD');
           },

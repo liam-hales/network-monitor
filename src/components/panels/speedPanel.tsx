@@ -3,7 +3,7 @@
 import { FunctionComponent, ReactElement } from 'react';
 import { LineChart } from '../../components';
 import { BaseProps, ChartDataPoint } from '../../types';
-import dayjs from 'dayjs';
+import date from '../../date';
 
 /**
  * The `SpeedPanel` component props
@@ -31,12 +31,12 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactEl
           name: 'Date Time',
           key: 'date',
           labelFormatter: (value) => {
-            return dayjs
+            return date
               .utc(value)
               .format('MMM DD');
           },
           tooltipFormatter: (value) => {
-            return dayjs
+            return date
               .utc(value)
               .format('MMM D YYYY, HH:mm');
           },
