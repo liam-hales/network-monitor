@@ -1,16 +1,16 @@
 'use server';
 
 import { StreamableValue, createStreamableValue } from '@ai-sdk/rsc';
-import { NetworkSpeedTestResults } from '../types';
+import { NetworkSpeedTestResults } from '../../types';
 import SpeedTest from '@cloudflare/speedtest';
 
 /**
- * Used to perform a network test and stream
- * the data in real-time to the client
+ * Used to perform a network performance test and
+ * stream the data in real-time to the client
  *
  * @returns The client streamable value
  */
-const networkSpeedTest = async (): Promise<StreamableValue<NetworkSpeedTestResults>> => {
+const performanceTest = async (): Promise<StreamableValue<NetworkSpeedTestResults>> => {
   // Define the new stream used to send data to the client
   // Define the speed test client used to perform the speed test
   const stream = createStreamableValue<NetworkSpeedTestResults>();
@@ -49,4 +49,4 @@ const networkSpeedTest = async (): Promise<StreamableValue<NetworkSpeedTestResul
   return stream.value;
 };
 
-export default networkSpeedTest;
+export default performanceTest;

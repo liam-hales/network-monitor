@@ -3,12 +3,12 @@
 import os, { NetworkInterfaceInfo } from 'os';
 
 /**
- * Used to resolve the
- * host network info
+ * Used to resolve the host network interface
+ * data such as the IP and MAC address
  *
  * @returns The host network info
  */
-const getHostNetworkInfo = (): NetworkInterfaceInfo => {
+const getHost = (): NetworkInterfaceInfo => {
   const netInterfaces = os.networkInterfaces();
 
   for (const key of Object.keys(netInterfaces)) {
@@ -34,4 +34,4 @@ const getHostNetworkInfo = (): NetworkInterfaceInfo => {
   throw new Error('Cannot resolve host network info');
 };
 
-export default getHostNetworkInfo;
+export default getHost;
