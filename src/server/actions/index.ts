@@ -1,11 +1,11 @@
-import insert from './insert.action';
-import find from './find.action';
+import dbInsert from './database/dbInsert.action';
+import dbFind from './database/dbFind.action';
 import getHost from './getHost.action';
 import performanceTest from './performanceTest.action';
 
 export {
-  insert,
-  find,
+  dbInsert,
+  dbFind,
   getHost,
   performanceTest,
 };

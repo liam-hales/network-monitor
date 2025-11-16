@@ -1,7 +1,7 @@
 'use server';
 
-import { dbClient, dbReady } from '../database';
-import { BaseEntity, InsertOptions } from '../types';
+import { dbClient, dbReady } from '../../database';
+import { BaseEntity, InsertOptions } from '../../types';
 
 /**
  * Used to insert a record into a

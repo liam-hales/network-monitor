@@ -1,7 +1,7 @@
 'use server';
 
-import { dbClient, dbReady } from '../database';
-import { BaseEntity, FindOptions } from '../types';
+import { dbClient, dbReady } from '../../database';
+import { BaseEntity, FindOptions } from '../../types';
 
 /**
  * Used to find database records in
