@@ -27,3 +27,23 @@ export interface FindOptions<E extends BaseEntity> {
   readonly collectionName: string;
   readonly query: LokiQuery<E & LokiObj>;
 }
+
+/**
+ * Describes the data received when a
+ * network performance test is performed
+ */
+export interface PerformanceTestResults {
+  readonly idle: PerformanceTestValues;
+  readonly download: PerformanceTestValues;
+  readonly upload: PerformanceTestValues;
+}
+
+/**
+ * Describes the individual
+ * network performance test values
+ */
+export interface PerformanceTestValues {
+  readonly bandwidth: number;
+  readonly latency: number;
+  readonly jitter: number;
+}

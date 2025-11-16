@@ -25,26 +25,6 @@ export interface DataFilters {
 }
 
 /**
- * Describes the data for when a
- * network speed test is performed
- */
-export interface NetworkSpeedTestResults {
-  readonly idle: NetworkSpeedTestValues;
-  readonly download: NetworkSpeedTestValues;
-  readonly upload: NetworkSpeedTestValues;
-}
-
-/**
- * Describes the individual network
- * speed test values
- */
-export interface NetworkSpeedTestValues {
-  readonly bandwidth: number;
-  readonly latency: number;
-  readonly jitter: number;
-}
-
-/**
  * Describes a single chart
  * tooltip data point
  */
