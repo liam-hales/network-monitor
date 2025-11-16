@@ -42,7 +42,8 @@ export interface ChartTooltipDataPoint {
 export interface ChartAxis {
   readonly name: string;
   readonly key: string;
-  readonly formatter?: (value: string) => string;
+  readonly labelFormatter?: (value: string) => string;
+  readonly tooltipFormatter?: (value: string) => string;
 }
 
 /**

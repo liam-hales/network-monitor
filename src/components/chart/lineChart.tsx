@@ -44,7 +44,7 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, da
         <XAxis
           name={xAxis.name}
           dataKey={xAxis.key}
-          tickFormatter={xAxis.formatter}
+          tickFormatter={xAxis.labelFormatter}
           tickMargin={6}
           interval="equidistantPreserveStart"
           type="category"
@@ -60,11 +60,22 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, da
           axisLine={false}
           tickLine={false}
         />
-        <Tooltip content={({ label = '', payload }) => {
+        <Tooltip content={({ payload }) => {
+
+          if (payload.length === 0) {
+            return;
+          }
+
+          const [first] = payload;
+          const axisValue = first.payload[xAxis.key];
+
           return (
             <ChartTooltip
-              title={`${label}`}
-              titleFormatter={xAxis.formatter}
+              title={
+                (xAxis.tooltipFormatter != null)
+                  ? xAxis.tooltipFormatter(axisValue as string)
+                  : axisValue
+              }
               unit={unit}
               dataPoints={[...payload]}
             />

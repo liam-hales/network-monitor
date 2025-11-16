@@ -30,12 +30,15 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactEl
         xAxis={{
           name: 'Date Time',
           key: 'date',
-          formatter: (value) => {
-            // Format the date value
-            // for the chart axis label
+          labelFormatter: (value) => {
             return dayjs
               .utc(value)
               .format('MMM DD');
+          },
+          tooltipFormatter: (value) => {
+            return dayjs
+              .utc(value)
+              .format('MMM D YYYY, HH:mm');
           },
         }}
         lines={[
