@@ -29,6 +29,12 @@ export interface FindOptions<E extends BaseEntity> {
 }
 
 /**
+ * Describes the data stored with each performance record
+ * in the `performance` database collection
+ */
+export type PerformanceEntity = BaseEntity & PerformanceTestResults;
+
+/**
  * Describes the data received when a
  * network performance test is performed
  */
