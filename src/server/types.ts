@@ -12,6 +12,8 @@ export type CollectionName = typeof collectionNames[number];
  */
 export interface BaseEntity {
   readonly date: string;
+  readonly host: Host;
+  readonly network: Network;
 }
 
 /**
@@ -41,6 +43,24 @@ export interface FindOptions<E extends BaseEntity> {
  * in the `performance` database collection
  */
 export type PerformanceEntity = BaseEntity & PerformanceTestResults;
+
+/**
+ * Describes the host data
+ */
+export interface Host {
+  readonly privateIpAddress: string;
+  readonly macAddress: string;
+}
+
+/**
+ * Describes the network data
+ */
+export interface Network {
+  readonly publicIpAddress: string;
+  readonly isp: string;
+  readonly latitude: number;
+  readonly longitude: number;
+}
 
 /**
  * Describes the data received when a
