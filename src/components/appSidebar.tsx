@@ -2,13 +2,14 @@ import { FunctionComponent, ReactElement } from 'react';
 import { appNavItems } from '../constants';
 import { BaseProps } from '../types';
 import { AppSidebarItem } from './';
+import { Host, Network } from '../server/types';
 
 /**
  * The `AppSidebar` component props
  */
 interface Props extends BaseProps {
-  readonly ipAddress: string;
-  readonly macAddress: string;
+  readonly host: Host;
+  readonly network: Network;
 }
 
 /**
@@ -18,20 +19,69 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `AppSidebar` component
  */
-const AppSidebar: FunctionComponent<Props> = ({ ipAddress, macAddress }): ReactElement<Props> => {
+const AppSidebar: FunctionComponent<Props> = ({ host, network }): ReactElement<Props> => {
+  const { privateIpAddress, macAddress } = host;
+  const { publicIpAddress, isp } = network;
+
   return (
-    <div className="h-full flex flex-col items-start gap-y-10 pt-8 pb-8 pl-4 pr-4 border-solid border-r-[1px] border-neutral-900">
-      <div className="flex flex-col items-start gap-y-4 pl-4 pr-4">
-        <p className="font-mono text-white text-xl">
-          Network Monitor
-        </p>
-        <div className="flex flex-col items-start gap-y-1">
+    <div className="h-full flex flex-col items-start justify-between pt-8 pb-8 pl-4 pr-4 border-solid border-r-[1px] border-neutral-900">
+      <div className="flex flex-col items-start gap-y-10">
+        <div className="flex flex-col items-start gap-y-1 pl-2 pr-2">
+          <p className="font-mono text-white text-xl">
+            Network Monitor
+          </p>
+          <p className="font-mono text-neutral-500 text-xs">
+            Self hosted network monitoring
+          </p>
+        </div>
+        <div className="w-full flex flex-col items-start gap-y-2">
+          {
+            appNavItems.map((item) => {
+              const { name, path, subItems } = item;
+              return (
+                <div
+                  className="w-full flex flex-col items-start"
+                  key={`sidebar-item-${name}`}
+                >
+                  <AppSidebarItem
+                    name={name}
+                    path={path}
+                  />
+                  {
+                    (subItems.length > 0) && (
+                      <div className="w-full flex flex-col items-start gap-y-2 pt-2 pb-4 pl-6">
+                        {
+                          subItems.map((item) => {
+                            const { name, path } = item;
+                            return (
+                              <AppSidebarItem
+                                key={`sidebar-sub-item-${name}`}
+                                name={name}
+                                path={path}
+                              />
+                            );
+                          })
+                        }
+                      </div>
+                    )
+                  }
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+      <div className="flex flex-col items-center gap-y-6 pl-2 pr-2">
+        <div className="w-full flex flex-col items-start gap-y-1">
+          <p className="font-mono text-white text-xs pb-2">
+            Host
+          </p>
           <div className="flex flex-row items-center">
             <p className="w-28 font-mono text-neutral-500 text-xs">
-              IP address:
+              Private IP:
             </p>
             <p className="font-mono text-neutral-500 text-xs">
-              {ipAddress}
+              {privateIpAddress}
             </p>
           </div>
           <div className="flex flex-row items-center">
@@ -43,42 +93,27 @@ const AppSidebar: FunctionComponent<Props> = ({ ipAddress, macAddress }): ReactE
             </p>
           </div>
         </div>
-      </div>
-      <div className="w-full flex flex-col items-start gap-y-2">
-        {
-          appNavItems.map((item) => {
-            const { name, path, subItems } = item;
-            return (
-              <div
-                className="w-full flex flex-col items-start"
-                key={`sidebar-item-${name}`}
-              >
-                <AppSidebarItem
-                  name={name}
-                  path={path}
-                />
-                {
-                  (subItems.length > 0) && (
-                    <div className="w-full flex flex-col items-start gap-y-2 pt-2 pb-4 pl-6">
-                      {
-                        subItems.map((item) => {
-                          const { name, path } = item;
-                          return (
-                            <AppSidebarItem
-                              key={`sidebar-sub-item-${name}`}
-                              name={name}
-                              path={path}
-                            />
-                          );
-                        })
-                      }
-                    </div>
-                  )
-                }
-              </div>
-            );
-          })
-        }
+        <div className="w-full flex flex-col items-start gap-y-1">
+          <p className="font-mono text-white text-xs pb-2">
+            Network
+          </p>
+          <div className="flex flex-row items-center">
+            <p className="w-28 font-mono text-neutral-500 text-xs">
+              Public IP:
+            </p>
+            <p className="font-mono text-neutral-500 text-xs">
+              {publicIpAddress}
+            </p>
+          </div>
+          <div className="flex flex-row items-center">
+            <p className="w-28 font-mono text-neutral-500 text-xs">
+              ISP Name:
+            </p>
+            <p className="font-mono text-neutral-500 text-xs">
+              {isp}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
