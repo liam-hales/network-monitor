@@ -1,14 +1,15 @@
 'use server';
 
-import os, { NetworkInterfaceInfo } from 'os';
+import os from 'os';
+import { Host } from '../types';
 
 /**
- * Used to resolve the host network interface
- * data such as the IP and MAC address
+ * Used to resolve the host data such as
+ * the private IP address and MAC address
  *
- * @returns The host network info
+ * @returns The host data
  */
-const getHost = (): NetworkInterfaceInfo => {
+const getHost = async (): Promise<Host> => {
   const netInterfaces = os.networkInterfaces();
 
   for (const key of Object.keys(netInterfaces)) {
@@ -25,7 +26,10 @@ const getHost = (): NetworkInterfaceInfo => {
         continue;
       }
 
-      return address;
+      return {
+        privateIpAddress: address.address,
+        macAddress: address.mac,
+      };
     }
   }
 
