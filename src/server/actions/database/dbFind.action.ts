@@ -26,7 +26,7 @@ const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[
     .chain()
     .find(query)
     .simplesort('date', {
-      desc: true,
+      desc: false,
     })
     .data();
 };
