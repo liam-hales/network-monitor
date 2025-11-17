@@ -7,7 +7,7 @@ import DatabaseClient from 'lokijs';
 export const collectionNames = [
   'network_performance',
   'network_uptime',
-];
+] as const;
 
 /**
  * Used to store a reference to the `Promise.resolve` function from
