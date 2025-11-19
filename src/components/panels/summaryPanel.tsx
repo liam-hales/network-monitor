@@ -94,7 +94,7 @@ const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, l
           />
         </div>
         <div className="flex flex-row items-center gap-x-1">
-          <p className="font-sans font-bold text-orange-400 text-4xl">
+          <p className="font-sans font-bold text-rose-400 text-4xl">
             {jitter}
           </p>
           <p className="font-mono text-white text-sm pt-3">
