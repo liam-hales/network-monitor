@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { SummaryPanel, SpeedPanel, LatencyPanel } from '../../components';
+import { SummaryPanel, SpeedPanel, LatencyPanel, JitterPanel } from '../../components';
 import { dbFind } from '../../server/actions';
 import { AsyncComponent } from '../../types';
 import { PerformanceEntity } from '../../server/types';
@@ -43,8 +43,22 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
     };
   });
 
+  /**
+   * The mapped chart data for
+   * the `JitterPanel` component
+   */
+  const jitterChartData = data.map((item) => {
+    const { date, idle } = item;
+
+    return {
+      date: date,
+      idle: Math.round(idle.jitter),
+    };
+  });
+
   const [latestSpeed] = [...speedChartData].reverse();
   const [latestLatency] = [...latencyChartData].reverse();
+  const [latestJitter] = [...jitterChartData].reverse();
 
   return (
     <div className="w-full flex flex-col items-center gap-y-6">
@@ -53,7 +67,7 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
         download={latestSpeed.download}
         upload={latestSpeed.download}
         latency={latestLatency.idle}
-        jitter={0}
+        jitter={latestJitter.idle}
       />
       <SpeedPanel
         className="w-full h-[300px]"
@@ -63,6 +77,10 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
         <LatencyPanel
           className="w-full h-[300px]"
           chartData={latencyChartData}
+        />
+        <JitterPanel
+          className="w-full h-[300px]"
+          chartData={jitterChartData}
         />
       </div>
     </div>
