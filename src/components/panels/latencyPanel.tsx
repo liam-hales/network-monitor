@@ -9,7 +9,7 @@ import date from '../../date';
  * The `LatencyPanel` component props
  */
 interface Props extends BaseProps {
-  readonly chartData: ChartDataPoint<'idle' | 'download' | 'upload'>[];
+  readonly chartData: ChartDataPoint<'idle'>[];
 }
 
 /**
@@ -43,19 +43,9 @@ const LatencyPanel: FunctionComponent<Props> = ({ className, chartData }): React
         }}
         lines={[
           {
-            name: 'Idle',
+            name: 'Idle Latency',
             key: 'idle',
             colour: 'var(--color-emerald-400)',
-          },
-          {
-            name: 'Download',
-            key: 'download',
-            colour: 'var(--color-blue-400)',
-          },
-          {
-            name: 'Upload',
-            key: 'upload',
-            colour: 'var(--color-purple-400)',
           },
         ]}
         unit="ms"
