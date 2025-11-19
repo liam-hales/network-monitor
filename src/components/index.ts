@@ -6,6 +6,7 @@ import ChartTooltip from './chart/chartTooltip';
 import SummaryPanel from './panels/summaryPanel';
 import SpeedPanel from './panels/speedPanel';
 import LatencyPanel from './panels/latencyPanel';
+import JitterPanel from './panels/jitterPanel';
 
 export {
   App,
@@ -16,4 +17,5 @@ export {
   SummaryPanel,
   SpeedPanel,
   LatencyPanel,
+  JitterPanel,
 };
