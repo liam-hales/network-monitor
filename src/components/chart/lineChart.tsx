@@ -46,6 +46,7 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, da
           dataKey={xAxis.key}
           tickFormatter={xAxis.labelFormatter}
           tickMargin={6}
+          minTickGap={30}
           interval="equidistantPreserveStart"
           type="category"
           stroke="var(--color-neutral-600)"
