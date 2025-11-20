@@ -8,8 +8,8 @@ import date from '../../date';
  * job using the `cron` package under the hood
  *
  * - Runs every 30th minute
- * - Performs a network performance test
- * - Inserts a record into the `performance` database collection
+ * - Performs a network performance test using `@cloudflare/speedtest`
+ * - Inserts a record into the `network_performance` database collection
  */
 const performanceCron = new CronJob('*/30 * * * *', async (): Promise<void> => {
 

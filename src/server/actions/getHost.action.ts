@@ -4,8 +4,8 @@ import os from 'os';
 import { Host } from '../types';
 
 /**
- * Used to resolve the host data such as
- * the private IP address and MAC address
+ * Used to resolve host data such as the
+ * private IP address and MAC address
  *
  * @returns The host data
  */
