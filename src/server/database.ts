@@ -1,13 +1,5 @@
+import { collectionNames } from '../constants';
 import DatabaseClient from 'lokijs';
-
-/**
- * Describes all database
- * collection names
- */
-export const collectionNames = [
-  'network_performance',
-  'network_uptime',
-] as const;
 
 /**
  * Used to store a reference to the `Promise.resolve` function from

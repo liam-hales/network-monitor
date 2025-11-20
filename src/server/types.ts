@@ -1,4 +1,4 @@
-import { collectionNames } from './database';
+import { collectionNames } from '../constants';
 
 /**
  * Describes the database

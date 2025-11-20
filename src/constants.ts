@@ -1,4 +1,13 @@
 /**
+ * Describes all database
+ * collection names
+ */
+export const collectionNames = [
+  'network_performance',
+  'network_uptime',
+] as const;
+
+/**
  * Describes all app navigation items used to render the
  * navigation buttons and determine the URL path
  */
