@@ -35,7 +35,21 @@ export interface InsertOptions<E extends BaseEntity> {
  */
 export interface FindOptions<E extends BaseEntity> {
   readonly collectionName: CollectionName;
-  readonly query: LokiQuery<E & LokiObj>;
+  readonly query?: LokiQuery<E & LokiObj>;
+  readonly sort?: SortOptions<E>;
+  readonly skip?: number;
+  readonly limit?: number;
+}
+
+/**
+ * Describes the sort options for
+ * the `find` server action
+ *
+ * - Generic type `E` for the entity
+ */
+export interface SortOptions<E extends BaseEntity> {
+  readonly by: keyof E;
+  readonly order?: 'asc' | 'desc';
 }
 
 /**

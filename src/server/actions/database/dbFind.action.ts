@@ -13,22 +13,34 @@ import { BaseEntity, FindOptions } from '../../types';
  * @returns The found entity records
  */
 const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[]> => {
-  const { collectionName, query } = options;
+  const { collectionName, query, sort, skip = 0, limit = 20 } = options;
 
   // Make sure the database is ready before
   // attempting to insert a record
   await dbReady;
 
-  // Get the database collection and query for the
-  // records using the from and to date filters
-  return dbClient
+  // Get the database collection and apply the
+  // query and pagination options
+  const builder = dbClient
     .getCollection<E>(collectionName)
     .chain()
     .find(query)
-    .simplesort('date', {
-      desc: false,
-    })
-    .data();
+    .offset(skip)
+    .limit(limit);
+
+  // If the `sort` option has been set
+  // then apply it to the database query
+  if (sort != null) {
+    const { by, order = 'asc' } = sort;
+
+    builder.simplesort(by, {
+      desc: (order === 'desc'),
+    });
+  }
+
+  // Execute the database query
+  // and return the data
+  return builder.data();
 };
 
 export default dbFind;
