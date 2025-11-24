@@ -3608,6 +3608,7 @@ __metadata:
     lucide-react: "npm:^0.553.0"
     next: "npm:^15.5.3"
     npm-check-updates: "npm:^19.1.2"
+    ping: "npm:^1.0.0"
     postcss: "npm:^8.5.6"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
@@ -3884,6 +3885,13 @@ __metadata:
   version: 4.0.3
   resolution: "picomatch@npm:4.0.3"
   checksum: 10/57b99055f40b16798f2802916d9c17e9744e620a0db136554af01d19598b96e45e2f00014c91d1b8b13874b80caa8c295b3d589a3f72373ec4aaf54baa5962d5
+  languageName: node
+  linkType: hard
+
+"ping@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "ping@npm:1.0.0"
+  checksum: 10/e32da93802aee941fdaad3ba1cb19f541bf3452540fa7b189be8a020478b571e92fe29a37156f0732b6bee47d6fb7180fc8ec85bb7ea4b31f995fd5b9db42fd3
   languageName: node
   linkType: hard
 
