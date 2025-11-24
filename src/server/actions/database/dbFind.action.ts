@@ -24,9 +24,7 @@ const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[
   const builder = dbClient
     .getCollection<E>(collectionName)
     .chain()
-    .find(query)
-    .offset(skip)
-    .limit(limit);
+    .find(query);
 
   // If the `sort` option has been set
   // then apply it to the database query
@@ -40,7 +38,10 @@ const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[
 
   // Execute the database query
   // and return the data
-  return builder.data();
+  return builder
+    .offset(skip)
+    .limit(limit)
+    .data();
 };
 
 export default dbFind;
