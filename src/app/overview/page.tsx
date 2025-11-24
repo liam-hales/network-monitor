@@ -56,18 +56,18 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
     };
   });
 
-  const [latestSpeed] = [...speedChartData].reverse();
-  const [latestLatency] = [...latencyChartData].reverse();
-  const [latestJitter] = [...jitterChartData].reverse();
+  const latestSpeed = speedChartData.at(-1);
+  const latestLatency = latencyChartData.at(-1);
+  const latestJitter = jitterChartData.at(-1);
 
   return (
     <div className="w-full flex flex-col items-center gap-y-6">
       <SummaryPanel
         className="w-full"
-        download={latestSpeed.download}
-        upload={latestSpeed.download}
-        latency={latestLatency.idle}
-        jitter={latestJitter.idle}
+        download={latestSpeed?.download ?? 0}
+        upload={latestSpeed?.upload ?? 0}
+        latency={latestLatency?.idle ?? 0}
+        jitter={latestJitter?.idle ?? 0}
       />
       <SpeedPanel
         className="w-full h-[300px]"
