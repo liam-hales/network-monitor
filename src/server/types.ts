@@ -45,6 +45,16 @@ export interface FindOptions<E extends BaseEntity> {
 export type PerformanceEntity = BaseEntity & PerformanceTestResults;
 
 /**
+ * Describes the data stored with each uptime record
+ * in the `network_uptime` database collection
+ */
+export interface UptimeEntity extends BaseEntity {
+  readonly status: 'success' | 'failure';
+  readonly time: number;
+  readonly output: string;
+}
+
+/**
  * Describes the host data
  */
 export interface Host {
