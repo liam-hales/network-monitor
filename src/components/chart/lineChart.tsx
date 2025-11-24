@@ -96,9 +96,7 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, da
                 activeDot={{
                   strokeWidth: 2,
                 }}
-                dot={{
-                  strokeWidth: 0.2,
-                }}
+                dot={false}
                 fill={colour}
                 stroke={colour}
                 strokeWidth={2}
