@@ -25,8 +25,8 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
 
     return {
       date: date,
-      download: Math.round(download.bandwidth / 1_000_000),
-      upload: Math.round(upload.bandwidth / 1_000_000),
+      download: Math.round(download.bandwidth),
+      upload: Math.round(upload.bandwidth),
     };
   });
 
