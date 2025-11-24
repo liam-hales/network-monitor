@@ -8,6 +8,15 @@ export const collectionNames = [
 ] as const;
 
 /**
+ * Describes the servers used for
+ * network uptime monitoring
+ */
+export const uptimeHosts = [
+  '1.1.1.1', // Cloudflare DNS
+  '8.8.8.8', // Google DNS
+];
+
+/**
  * Describes all app navigation items used to render the
  * navigation buttons and determine the URL path
  */
