@@ -29,21 +29,30 @@ export interface InsertOptions<E extends BaseEntity> {
 
 /**
  * Describes the options for
- * the `find` server action
+ * the `dbFindOne` server action
  *
  * - Generic type `E` for the entity
  */
-export interface FindOptions<E extends BaseEntity> {
+export interface FindOneOptions<E extends BaseEntity> {
   readonly collectionName: CollectionName;
   readonly query?: LokiQuery<E & LokiObj>;
   readonly sort?: SortOptions<E>;
+}
+
+/**
+ * Describes the options for
+ * the `dbFind` server action
+ *
+ * - Generic type `E` for the entity
+ */
+export interface FindOptions<E extends BaseEntity> extends FindOneOptions<E> {
   readonly skip?: number;
   readonly limit?: number;
 }
 
 /**
  * Describes the sort options for
- * the `find` server action
+ * the `dbFind` server action
  *
  * - Generic type `E` for the entity
  */
