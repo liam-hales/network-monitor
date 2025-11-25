@@ -72,8 +72,9 @@ export type PerformanceEntity = BaseEntity & PerformanceTestResults;
  * in the `network_uptime` database collection
  */
 export interface UptimeEntity extends BaseEntity {
+  readonly forHost: string;
   readonly status: 'success' | 'failure';
-  readonly time: number;
+  readonly latency: number;
   readonly output: string;
 }
 
