@@ -1,9 +1,6 @@
-'use client';
-
 import { FunctionComponent, ReactElement } from 'react';
 import { LineChart } from '../../components';
 import { BaseProps, ChartDataPoint } from '../../types';
-import date from '../../date';
 
 /**
  * The `JitterPanel` component props
@@ -27,20 +24,6 @@ const JitterPanel: FunctionComponent<Props> = ({ className, chartData }): ReactE
       </p>
       <LineChart
         className="p-2"
-        xAxis={{
-          name: 'Date Time',
-          key: 'date',
-          labelFormatter: (value) => {
-            return date
-              .utc(value)
-              .format('MMM DD');
-          },
-          tooltipFormatter: (value) => {
-            return date
-              .utc(value)
-              .format('MMM D YYYY, HH:mm');
-          },
-        }}
         lines={[
           {
             name: 'Idle Jitter',

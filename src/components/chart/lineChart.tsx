@@ -1,15 +1,15 @@
 'use client';
 
 import { FunctionComponent, ReactElement } from 'react';
-import { BaseProps, ChartAxis, ChartDataPoint, ChartLine } from '../../types';
+import { BaseProps, ChartDataPoint, ChartLine } from '../../types';
 import { ResponsiveContainer, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis, Line } from 'recharts';
 import { ChartTooltip } from '../';
+import date from '../../date';
 
 /**
  * The `LineChart` component props
  */
 interface Props extends BaseProps {
-  readonly xAxis: ChartAxis;
   readonly lines: ChartLine[];
   readonly unit: string;
   readonly data: ChartDataPoint[];
@@ -22,7 +22,7 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `LineChart` component
  */
-const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, data }): ReactElement<Props> => {
+const LineChart: FunctionComponent<Props> = ({ className, lines, unit, data }): ReactElement<Props> => {
   return (
     <ResponsiveContainer className={className}>
       <AreaChart
@@ -42,9 +42,13 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, da
           opacity={0.2}
         />
         <XAxis
-          name={xAxis.name}
-          dataKey={xAxis.key}
-          tickFormatter={xAxis.labelFormatter}
+          name="Date Time"
+          dataKey="date"
+          tickFormatter={(value: string) => {
+            return date
+              .utc(value)
+              .format('MMM DD');
+          }}
           tickMargin={6}
           minTickGap={30}
           interval="equidistantPreserveStart"
@@ -68,14 +72,14 @@ const LineChart: FunctionComponent<Props> = ({ className, xAxis, lines, unit, da
           }
 
           const [first] = payload;
-          const axisValue = first.payload[xAxis.key];
+          const { date: value } = first.payload;
 
           return (
             <ChartTooltip
               title={
-                (xAxis.tooltipFormatter != null)
-                  ? xAxis.tooltipFormatter(axisValue as string)
-                  : axisValue
+                date
+                  .utc(value as string)
+                  .format('MMM D YYYY, HH:mm')
               }
               unit={unit}
               dataPoints={[...payload]}
