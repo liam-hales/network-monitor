@@ -14,6 +14,13 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
   const data = await dbFind<PerformanceEntity>({
     collectionName: 'network_performance',
     query: {},
+    // Reverse the data array so it's in the
+    // correct order for the chart data
+    reverse: true,
+    sort: {
+      by: 'date',
+      order: 'desc',
+    },
   });
 
   /**
