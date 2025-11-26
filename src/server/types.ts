@@ -48,6 +48,7 @@ export interface FindOneOptions<E extends BaseEntity> {
 export interface FindOptions<E extends BaseEntity> extends FindOneOptions<E> {
   readonly skip?: number;
   readonly limit?: number;
+  readonly reverse?: boolean;
 }
 
 /**

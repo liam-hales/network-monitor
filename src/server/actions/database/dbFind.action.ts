@@ -13,7 +13,7 @@ import { BaseEntity, FindOptions } from '../../types';
  * @returns The found entity records
  */
 const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[]> => {
-  const { collectionName, query, sort, skip = 0, limit = 20 } = options;
+  const { collectionName, query, sort, skip = 0, limit = 20, reverse = false } = options;
 
   // Make sure the database is ready before
   // attempting to insert a record
@@ -37,11 +37,17 @@ const dbFind = async <E extends BaseEntity>(options: FindOptions<E>): Promise<E[
   }
 
   // Execute the database query
-  // and return the data
-  return builder
+  // and get the data
+  const data = builder
     .offset(skip)
     .limit(limit)
     .data();
+
+  // If the `reverse` option has been set
+  // then reverse the data array
+  return (reverse === true)
+    ? data.reverse()
+    : data;
 };
 
 export default dbFind;
