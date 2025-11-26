@@ -46,17 +46,6 @@ export interface ChartTooltipDataPoint {
 }
 
 /**
- * Describes the axis data for
- * the `LineChart` component
- */
-export interface ChartAxis {
-  readonly name: string;
-  readonly key: string;
-  readonly labelFormatter?: (value: string) => string;
-  readonly tooltipFormatter?: (value: string) => string;
-}
-
-/**
  * Describes the line data for
  * the `LineChart` component
  */
