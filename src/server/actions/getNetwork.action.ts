@@ -12,14 +12,14 @@ const getNetwork = async (): Promise<Network> => {
 
   // Fetch data from the API to resolve network data
   // such as public IP address, ISP and location
-  const response = await fetch('http://ip-api.com/json');
-  const { query, isp, lat, lon } = await response.json();
+  const response = await fetch('https://speed.cloudflare.com/meta');
+  const { clientIp, asOrganization, latitude, longitude } = await response.json();
 
   return {
-    publicIpAddress: query,
-    isp: isp,
-    latitude: lat,
-    longitude: lon,
+    publicIpAddress: clientIp,
+    isp: asOrganization,
+    latitude: latitude,
+    longitude: longitude,
   };
 };
 
