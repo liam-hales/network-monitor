@@ -11,8 +11,11 @@ import date from '../../date';
  */
 interface Props extends BaseProps {
   readonly lines: ChartLine[];
-  readonly unit: string;
   readonly data: ChartDataPoint[];
+  readonly unit: string;
+  readonly showAxis?: boolean;
+  readonly showGrid?: boolean;
+  readonly showTooltip?: boolean;
 }
 
 /**
@@ -22,7 +25,17 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `LineChart` component
  */
-const LineChart: FunctionComponent<Props> = ({ className, lines, unit, data }): ReactElement<Props> => {
+const LineChart: FunctionComponent<Props> = (props): ReactElement<Props> => {
+  const {
+    className,
+    lines,
+    data,
+    unit,
+    showAxis = true,
+    showGrid = true,
+    showTooltip = true,
+  } = props;
+
   return (
     <ResponsiveContainer className={className}>
       <AreaChart
@@ -32,61 +45,76 @@ const LineChart: FunctionComponent<Props> = ({ className, lines, unit, data }): 
         margin={{
           top: 0,
           right: 0,
-          bottom: -8,
+          bottom: (showAxis === true) ? -8 : 0,
           left: 0,
         }}
       >
-        <CartesianGrid
-          strokeDasharray="3 3"
-          stroke="var(--color-neutral-600)"
-          opacity={0.2}
-        />
-        <XAxis
-          name="Date Time"
-          dataKey="date"
-          tickFormatter={(value: string) => {
-            return date
-              .utc(value)
-              .format('MMM DD');
-          }}
-          tickMargin={6}
-          minTickGap={30}
-          interval="equidistantPreserveStart"
-          type="category"
-          stroke="var(--color-neutral-600)"
-          axisLine={false}
-          tickLine={false}
-        />
-        <YAxis
-          tickMargin={6}
-          type="number"
-          width="auto"
-          stroke="var(--color-neutral-600)"
-          axisLine={false}
-          tickLine={false}
-        />
-        <Tooltip content={({ payload }) => {
-
-          if (payload.length === 0) {
-            return;
-          }
-
-          const [first] = payload;
-          const { date: value } = first.payload;
-
-          return (
-            <ChartTooltip
-              title={
-                date
-                  .utc(value as string)
-                  .format('MMM D YYYY, HH:mm')
-              }
-              unit={unit}
-              dataPoints={[...payload]}
+        {
+          (showAxis === true) && (
+            <>
+              <XAxis
+                name="Date Time"
+                dataKey="date"
+                tickFormatter={(value: string) => {
+                  return date
+                    .utc(value)
+                    .format('MMM DD');
+                }}
+                tickMargin={6}
+                minTickGap={30}
+                interval="equidistantPreserveStart"
+                type="category"
+                stroke="var(--color-neutral-600)"
+                axisLine={false}
+                tickLine={false}
+              />
+              <YAxis
+                tickMargin={6}
+                type="number"
+                width="auto"
+                stroke="var(--color-neutral-600)"
+                axisLine={false}
+                tickLine={false}
+              />
+            </>
+          )
+        }
+        {
+          (showGrid === true) && (
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="var(--color-neutral-600)"
+              opacity={0.2}
             />
-          );
-        }}
-        />
+
+          )
+        }
+        {
+          (showTooltip === true) && (
+            <Tooltip content={({ payload }) => {
+
+              if (payload.length === 0) {
+                return;
+              }
+
+              const [first] = payload;
+              const { date: value } = first.payload;
+
+              return (
+                <ChartTooltip
+                  title={
+                    date
+                      .utc(value as string)
+                      .format('MMM D YYYY, HH:mm')
+                  }
+                  unit={unit}
+                  dataPoints={[...payload]}
+                />
+              );
+            }}
+            />
+          )
+        }
         {
           lines.map((line) => {
             const { name, key, colour } = line;
