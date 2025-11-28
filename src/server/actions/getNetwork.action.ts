@@ -1,14 +1,14 @@
 'use server';
 
-import { Network } from '../types';
+import { PublicNetwork } from '../types';
 
 /**
- * Used to resolve network data such as the
- * public IP address, ISP and location
+ * Used to resolve the public network information
+ * such as the IP address, ISP and location
  *
- * @returns The network data
+ * @returns The public network data
  */
-const getNetwork = async (): Promise<Network> => {
+const getNetwork = async (): Promise<PublicNetwork> => {
 
   // Fetch data from the API to resolve network data
   // such as public IP address, ISP and location
@@ -16,7 +16,7 @@ const getNetwork = async (): Promise<Network> => {
   const { clientIp, asOrganization, latitude, longitude } = await response.json();
 
   return {
-    publicIpAddress: clientIp,
+    ipAddress: clientIp,
     isp: asOrganization,
     latitude: latitude,
     longitude: longitude,

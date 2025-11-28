@@ -2,14 +2,14 @@ import { FunctionComponent, ReactElement } from 'react';
 import { appNavItems } from '../constants';
 import { BaseProps } from '../types';
 import { AppSidebarItem } from './';
-import { Host, Network } from '../server/types';
+import { PrivateHost, PublicNetwork } from '../server/types';
 
 /**
  * The `AppSidebar` component props
  */
 interface Props extends BaseProps {
-  readonly host: Host;
-  readonly network: Network;
+  readonly privateHost: PrivateHost;
+  readonly publicNetwork: PublicNetwork;
 }
 
 /**
@@ -19,10 +19,7 @@ interface Props extends BaseProps {
  * @param props The component props
  * @returns The `AppSidebar` component
  */
-const AppSidebar: FunctionComponent<Props> = ({ host, network }): ReactElement<Props> => {
-  const { privateIpAddress, macAddress } = host;
-  const { publicIpAddress, isp } = network;
-
+const AppSidebar: FunctionComponent<Props> = ({ privateHost, publicNetwork }): ReactElement<Props> => {
   return (
     <div className="h-full flex flex-col items-start justify-between pt-8 pb-8 pl-4 pr-4 border-solid border-r-[1px] border-neutral-900">
       <div className="flex flex-col items-start gap-y-10">
@@ -74,14 +71,14 @@ const AppSidebar: FunctionComponent<Props> = ({ host, network }): ReactElement<P
       <div className="flex flex-col items-center gap-y-6 pl-2 pr-2">
         <div className="w-full flex flex-col items-start gap-y-1">
           <p className="font-mono text-white text-xs pb-2">
-            Host
+            Private Host
           </p>
           <div className="flex flex-row items-center">
             <p className="w-28 font-mono text-neutral-500 text-xs">
-              Private IP:
+              IP address:
             </p>
             <p className="font-mono text-neutral-500 text-xs">
-              {privateIpAddress}
+              {privateHost.ipAddress}
             </p>
           </div>
           <div className="flex flex-row items-center">
@@ -89,28 +86,28 @@ const AppSidebar: FunctionComponent<Props> = ({ host, network }): ReactElement<P
               MAC address:
             </p>
             <p className="font-mono text-neutral-500 text-xs">
-              {macAddress}
+              {privateHost.macAddress}
             </p>
           </div>
         </div>
         <div className="w-full flex flex-col items-start gap-y-1">
           <p className="font-mono text-white text-xs pb-2">
-            Network
+            Public Network
           </p>
           <div className="flex flex-row items-center">
             <p className="w-28 font-mono text-neutral-500 text-xs">
-              Public IP:
+              IP address:
             </p>
             <p className="font-mono text-neutral-500 text-xs">
-              {publicIpAddress}
+              {publicNetwork.ipAddress}
             </p>
           </div>
           <div className="flex flex-row items-center">
             <p className="w-28 font-mono text-neutral-500 text-xs">
-              ISP Name:
+              ISP name:
             </p>
             <p className="font-mono text-neutral-500 text-xs">
-              {isp}
+              {publicNetwork.isp}
             </p>
           </div>
         </div>

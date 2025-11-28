@@ -1,15 +1,15 @@
 'use server';
 
 import os from 'os';
-import { Host } from '../types';
+import { PrivateHost } from '../types';
 
 /**
- * Used to resolve host data such as the
- * private IP address and MAC address
+ * Used to resolve the private host information
+ * such as the IP address and MAC address
  *
- * @returns The host data
+ * @returns The private host data
  */
-const getHost = async (): Promise<Host> => {
+const getHost = async (): Promise<PrivateHost> => {
   const netInterfaces = os.networkInterfaces();
 
   for (const key of Object.keys(netInterfaces)) {
@@ -27,7 +27,7 @@ const getHost = async (): Promise<Host> => {
       }
 
       return {
-        privateIpAddress: address.address,
+        ipAddress: address.address,
         macAddress: address.mac,
       };
     }

@@ -17,15 +17,15 @@ interface Props extends BaseProps {
  * @returns The `App` component
  */
 const App: AsyncComponent<Props> = async ({ children }): Promise<ReactElement<Props>> => {
-  const host = await getHost();
-  const network = await getNetwork();
+  const privateHost = await getHost();
+  const publicNetwork = await getNetwork();
 
   return (
     <div className="flex flex-row items-start">
       <div className="h-screen sticky top-0">
         <AppSidebar
-          host={host}
-          network={network}
+          privateHost={privateHost}
+          publicNetwork={publicNetwork}
         />
       </div>
       <div className="w-full flex flex-col items-center p-8">
