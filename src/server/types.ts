@@ -112,7 +112,7 @@ export interface PerformanceTestResults {
  * network performance test values
  */
 export interface PerformanceTestValues {
-  readonly bandwidth: number;
+  readonly throughput: number;
   readonly latency: number;
   readonly jitter: number;
 }

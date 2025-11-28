@@ -38,17 +38,17 @@ const performanceTest = async function* (): AsyncGenerator<PerformanceTestResult
     resolveNext([
       {
         idle: {
-          bandwidth: 0,
+          throughput: 0,
           latency: Math.round((results.latency ?? 0) * 100) / 100,
           jitter: Math.round((results.jitter ?? 0) * 100) / 100,
         },
         download: {
-          bandwidth: Math.round((results.download ?? 0) / 10_000) / 100,
+          throughput: Math.round((results.download ?? 0) / 10_000) / 100,
           latency: Math.round((results.downLoadedLatency ?? 0) * 100) / 100,
           jitter: Math.round((results.downLoadedJitter ?? 0) * 100) / 100,
         },
         upload: {
-          bandwidth: Math.round((results.upload ?? 0) / 10_000) / 100,
+          throughput: Math.round((results.upload ?? 0) / 10_000) / 100,
           latency: Math.round((results.upLoadedLatency ?? 0) * 100) / 100,
           jitter: Math.round((results.upLoadedJitter ?? 0) * 100) / 100,
         },
