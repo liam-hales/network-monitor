@@ -37,7 +37,7 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactEl
           },
         ]}
         data={chartData}
-        unit="mbps"
+        unit="Mbps"
       />
     </div>
   );

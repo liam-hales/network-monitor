@@ -38,7 +38,7 @@ const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, l
             {download}
           </p>
           <p className="font-mono text-white text-sm pt-3">
-            mbps
+            Mbps
           </p>
         </div>
       </div>
@@ -58,7 +58,7 @@ const SummaryPanel: FunctionComponent<Props> = ({ className, download, upload, l
             {upload}
           </p>
           <p className="font-mono text-white text-sm pt-3">
-            mbps
+            Mbps
           </p>
         </div>
       </div>
