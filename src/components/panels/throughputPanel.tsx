@@ -3,24 +3,24 @@ import { LineChart } from '../../components';
 import { BaseProps, ChartDataPoint } from '../../types';
 
 /**
- * The `SpeedPanel` component props
+ * The `ThroughputPanel` component props
  */
 interface Props extends BaseProps {
   readonly chartData: ChartDataPoint<'download' | 'upload'>[];
 }
 
 /**
- * Used to render the network speed
+ * Used to render the network throughput
  * panel for the overview page
  *
  * @param props The component props
- * @returns The `SpeedPanel` component
+ * @returns The `ThroughputPanel` component
  */
-const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactElement<Props> => {
+const ThroughputPanel: FunctionComponent<Props> = ({ className, chartData }): ReactElement<Props> => {
   return (
     <div className={`${className ?? ''} flex flex-col items-start bg-neutral-950 rounded-lg border-solid border-[1px] border-neutral-900 gap-y-5 p-4`}>
       <p className="font-mono text-white text-lg">
-        Speed
+        Throughput
       </p>
       <LineChart
         className="p-2"
@@ -43,4 +43,4 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactEl
   );
 };
 
-export default SpeedPanel;
+export default ThroughputPanel;

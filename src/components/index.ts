@@ -4,7 +4,7 @@ import AppSidebarItem from './appSidebarItem';
 import LineChart from './chart/lineChart';
 import ChartTooltip from './chart/chartTooltip';
 import SummaryPanel from './panels/summaryPanel';
-import SpeedPanel from './panels/speedPanel';
+import ThroughputPanel from './panels/throughputPanel';
 import LatencyPanel from './panels/latencyPanel';
 import JitterPanel from './panels/jitterPanel';
 
@@ -15,7 +15,7 @@ export {
   LineChart,
   ChartTooltip,
   SummaryPanel,
-  SpeedPanel,
+  ThroughputPanel,
   LatencyPanel,
   JitterPanel,
 };

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { SummaryPanel, SpeedPanel, LatencyPanel, JitterPanel } from '../../components';
+import { SummaryPanel, ThroughputPanel, LatencyPanel, JitterPanel } from '../../components';
 import { dbFind } from '../../server/actions';
 import { AsyncComponent } from '../../types';
 import { PerformanceEntity } from '../../server/types';
@@ -25,9 +25,9 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
 
   /**
    * The mapped chart data for
-   * the `SummaryPanel` component
+   * the `ThroughputPanel` component
    */
-  const speedChartData = data.map((item) => {
+  const throughputChartData = data.map((item) => {
     const { date, download, upload } = item;
 
     return {
@@ -63,7 +63,7 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
     };
   });
 
-  const latestSpeed = speedChartData.at(-1);
+  const latestThroughput = throughputChartData.at(-1);
   const latestLatency = latencyChartData.at(-1);
   const latestJitter = jitterChartData.at(-1);
 
@@ -71,14 +71,14 @@ const OverviewPage: AsyncComponent = async (): Promise<ReactElement> => {
     <div className="w-full flex flex-col items-center gap-y-6">
       <SummaryPanel
         className="w-full"
-        download={latestSpeed?.download ?? 0}
-        upload={latestSpeed?.upload ?? 0}
+        download={latestThroughput?.download ?? 0}
+        upload={latestThroughput?.upload ?? 0}
         latency={latestLatency?.idle ?? 0}
         jitter={latestJitter?.idle ?? 0}
       />
-      <SpeedPanel
+      <ThroughputPanel
         className="w-full h-[300px]"
-        chartData={speedChartData}
+        chartData={throughputChartData}
       />
       <div className="w-full flex flex-row items-center justify-between gap-x-6">
         <LatencyPanel
