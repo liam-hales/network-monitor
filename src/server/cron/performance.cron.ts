@@ -24,10 +24,10 @@ const performanceCron = new CronJob('*/30 * * * *', async (): Promise<void> => {
     return;
   }
 
-  // Fetch the host and network data
-  // to add to the record data
-  const host = await getHost();
-  const network = await getNetwork();
+  // Fetch the private host and public network
+  // data to add to the record data
+  const privateHost = await getHost();
+  const publicNetwork = await getNetwork();
 
   const currentDate = date
     .utc()
@@ -40,8 +40,10 @@ const performanceCron = new CronJob('*/30 * * * *', async (): Promise<void> => {
     payload: {
       ...results,
       date: currentDate,
-      host: host,
-      network: network,
+      metadata: {
+        privateHost: privateHost,
+        publicNetwork: publicNetwork,
+      },
     },
   });
 });

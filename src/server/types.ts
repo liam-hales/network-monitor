@@ -12,8 +12,10 @@ export type CollectionName = typeof collectionNames[number];
  */
 export interface BaseEntity {
   readonly date: string;
-  readonly privateHost: PrivateHost;
-  readonly publicNetwork: PublicNetwork;
+  readonly metadata: {
+    readonly privateHost: PrivateHost;
+    readonly publicNetwork: PublicNetwork;
+  };
 }
 
 /**
