@@ -31,8 +31,8 @@ const LatencyPanel: FunctionComponent<Props> = ({ className, chartData }): React
             colour: 'var(--color-emerald-400)',
           },
         ]}
-        unit="ms"
         data={chartData}
+        unit="ms"
       />
     </div>
   );

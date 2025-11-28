@@ -36,8 +36,8 @@ const SpeedPanel: FunctionComponent<Props> = ({ className, chartData }): ReactEl
             colour: 'var(--color-purple-400)',
           },
         ]}
-        unit="mbps"
         data={chartData}
+        unit="mbps"
       />
     </div>
   );

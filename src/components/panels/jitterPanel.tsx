@@ -31,8 +31,8 @@ const JitterPanel: FunctionComponent<Props> = ({ className, chartData }): ReactE
             colour: 'var(--color-rose-400)',
           },
         ]}
-        unit="ms"
         data={chartData}
+        unit="ms"
       />
     </div>
   );
