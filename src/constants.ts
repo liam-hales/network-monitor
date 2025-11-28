@@ -26,8 +26,8 @@ export const appNavItems = [
     path: '/overview',
     subItems: [
       {
-        name: 'Speed',
-        path: '/overview/speed',
+        name: 'Throughput',
+        path: '/overview/throughput',
       },
       {
         name: 'Latency',
@@ -40,8 +40,8 @@ export const appNavItems = [
     ],
   },
   {
-    name: 'Speed Test',
-    path: '/speedtest',
+    name: 'Live Test',
+    path: '/live-test',
     subItems: [],
   },
   {
