@@ -1,5 +1,5 @@
 import { CronJob } from 'cron';
-import { dbFindOne, dbInsert, getHostDevice, getNetwork } from '../actions';
+import { dbFindOne, dbInsert, getHostDevice, getPublicNetwork } from '../actions';
 import { UptimeEntity } from '../types';
 import { uptimeHosts } from '../../constants';
 import date from '../../date';
@@ -18,7 +18,7 @@ const uptimeCron = new CronJob('*/30 * * * *', async (): Promise<void> => {
   // Fetch the host device and public network
   // data to add to the record data
   const hostDevice = await getHostDevice();
-  const publicNetwork = await getNetwork();
+  const publicNetwork = await getPublicNetwork();
 
   const currentDate = date
     .utc()

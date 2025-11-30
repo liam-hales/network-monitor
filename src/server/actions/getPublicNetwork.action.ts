@@ -8,7 +8,7 @@ import { PublicNetwork } from '../types';
  *
  * @returns The public network data
  */
-const getNetwork = async (): Promise<PublicNetwork> => {
+const getPublicNetwork = async (): Promise<PublicNetwork> => {
 
   // Fetch data from the API to resolve network data
   // such as public IP address, ISP and location
@@ -23,4 +23,4 @@ const getNetwork = async (): Promise<PublicNetwork> => {
   };
 };
 
-export default getNetwork;
+export default getPublicNetwork;

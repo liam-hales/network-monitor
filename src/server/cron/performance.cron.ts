@@ -1,5 +1,5 @@
 import { CronJob } from 'cron';
-import { performanceTest, dbInsert, getHostDevice, getNetwork } from '../actions';
+import { performanceTest, dbInsert, getHostDevice, getPublicNetwork } from '../actions';
 import { PerformanceEntity } from '../types';
 import date from '../../date';
 
@@ -27,7 +27,7 @@ const performanceCron = new CronJob('*/30 * * * *', async (): Promise<void> => {
   // Fetch the host device and public network
   // data to add to the record data
   const hostDevice = await getHostDevice();
-  const publicNetwork = await getNetwork();
+  const publicNetwork = await getPublicNetwork();
 
   const currentDate = date
     .utc()
