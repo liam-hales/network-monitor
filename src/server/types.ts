@@ -13,7 +13,7 @@ export type CollectionName = typeof collectionNames[number];
 export interface BaseEntity {
   readonly date: string;
   readonly metadata: {
-    readonly privateHost: PrivateHost;
+    readonly hostDevice: HostDevice;
     readonly publicNetwork: PublicNetwork;
   };
 }
@@ -82,10 +82,10 @@ export interface UptimeEntity extends BaseEntity {
 }
 
 /**
- * Describes the private
- * host data
+ * Describes the host
+ * device data
  */
-export interface PrivateHost {
+export interface HostDevice {
   readonly ipAddress: string;
   readonly macAddress: string;
 }

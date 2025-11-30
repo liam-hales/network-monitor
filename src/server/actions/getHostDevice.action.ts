@@ -1,15 +1,15 @@
 'use server';
 
 import os from 'os';
-import { PrivateHost } from '../types';
+import { HostDevice } from '../types';
 
 /**
- * Used to resolve the private host information
- * such as the IP address and MAC address
+ * Used to resolve the host device information
+ * such as its IP address and MAC address
  *
- * @returns The private host data
+ * @returns The host device data
  */
-const getHost = async (): Promise<PrivateHost> => {
+const getHostDevice = async (): Promise<HostDevice> => {
   const netInterfaces = os.networkInterfaces();
 
   for (const key of Object.keys(netInterfaces)) {
@@ -35,7 +35,7 @@ const getHost = async (): Promise<PrivateHost> => {
 
   // No network info was found,
   // throw an error
-  throw new Error('Cannot resolve host network info');
+  throw new Error('Cannot resolve host device network info');
 };
 
-export default getHost;
+export default getHostDevice;
