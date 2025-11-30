@@ -49,4 +49,9 @@ export const appNavItems = [
     path: '/devices',
     subItems: [],
   },
+  {
+    name: 'Info',
+    path: '/info',
+    subItems: [],
+  },
 ] as const;
