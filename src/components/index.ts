@@ -7,6 +7,7 @@ import SummaryPanel from './panels/summaryPanel';
 import ThroughputPanel from './panels/throughputPanel';
 import LatencyPanel from './panels/latencyPanel';
 import JitterPanel from './panels/jitterPanel';
+import Map from './map';
 
 export {
   App,
@@ -18,4 +19,5 @@ export {
   ThroughputPanel,
   LatencyPanel,
   JitterPanel,
+  Map,
 };
