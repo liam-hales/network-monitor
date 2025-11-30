@@ -97,6 +97,7 @@ export interface HostDevice {
 export interface PublicNetwork {
   readonly ipAddress: string;
   readonly isp: string;
+  readonly asn: number;
   readonly latitude: number;
   readonly longitude: number;
 }
