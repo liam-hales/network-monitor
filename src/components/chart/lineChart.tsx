@@ -125,9 +125,13 @@ const LineChart: FunctionComponent<Props> = (props): ReactElement<Props> => {
                 name={name}
                 dataKey={key}
                 type="monotone"
-                activeDot={{
-                  strokeWidth: 2,
-                }}
+                activeDot={
+                  (showTooltip === true)
+                    ? {
+                        strokeWidth: 2,
+                      }
+                    : false
+                }
                 dot={false}
                 fill={colour}
                 stroke={colour}
