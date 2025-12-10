@@ -15,8 +15,8 @@ const performanceCron = new CronJob('*/30 * * * *', async (): Promise<void> => {
 
   // Run the performance test and await the entire generator
   // Once done, extract the last part to obtain the final results
-  const streamValue = performanceTest();
-  const results = (await Array.fromAsync(streamValue)).at(-1);
+  const generator = performanceTest();
+  const results = (await Array.fromAsync(generator)).at(-1);
 
   // There should always be results
   // but if not, then return
